@@ -527,6 +527,7 @@ LOCAL_SRC_FILES +=  \
   crypto/evp/digest.c \
   crypto/evp/e_aes.c \
   crypto/evp/e_aes_cbc_hmac_sha1.c \
+  crypto/evp/e_aes_cbc_hmac_sha256.c \
   crypto/evp/e_bf.c \
   crypto/evp/e_des.c \
   crypto/evp/e_des3.c \
@@ -589,6 +590,7 @@ LOCAL_SRC_FILES +=  \
   crypto/modes/gcm128.c \
   crypto/modes/ofb128.c \
   crypto/modes/xts128.c \
+  crypto/modes/wrap128.c \
   crypto/o_dir.c \
   crypto/o_init.c \
   crypto/o_str.c \
