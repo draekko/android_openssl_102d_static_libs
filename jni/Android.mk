@@ -822,10 +822,14 @@ LOCAL_CFLAGS += \
 
 LOCAL_SRC_FILES += \
   crypto/bf/bf_enc.c \
+  crypto/bn/bn_asm.c \
+  crypto/bn/rsaz_exp.c \
   crypto/des/des_enc.c \
   crypto/des/fcrypt_b.c \
   crypto/aes/asm/aes-x86_64.S \
+  crypto/aes/asm/aesni-mb-x86_64.S \
   crypto/aes/asm/aesni-sha1-x86_64.S \
+  crypto/aes/asm/aesni-sha256-x86_64.S \
   crypto/aes/asm/aesni-x86_64.S \
   crypto/aes/asm/bsaes-x86_64.S \
   crypto/aes/asm/vpaes-x86_64.S \
@@ -833,12 +837,17 @@ LOCAL_SRC_FILES += \
   crypto/bn/asm/x86_64-gf2m.S \
   crypto/bn/asm/x86_64-mont.S \
   crypto/bn/asm/x86_64-mont5.S \
+  crypto/bn/asm/rsaz-avx2.S \
+  crypto/bn/asm/rsaz-x86_64.S \
   crypto/md5/asm/md5-x86_64.S \
+  crypto/modes/asm/aesni-gcm-x86_64.S \
   crypto/modes/asm/ghash-x86_64.S \
   crypto/rc4/asm/rc4-md5-x86_64.S \
   crypto/rc4/asm/rc4-x86_64.S \
   crypto/sha/asm/sha1-x86_64.S \
+  crypto/sha/asm/sha1-mb-x86_64.S \
   crypto/sha/asm/sha256-x86_64.S \
+  crypto/sha/asm/sha256-mb-x86_64.S \
   crypto/sha/asm/sha512-x86_64.S \
   crypto/x86_64cpuid.S 
 
@@ -980,26 +989,16 @@ else ifeq ($(TARGET_ARCH_ABI),$(filter $(TARGET_ARCH_ABI),mips64))
 ###########################################
 # MIPS64 PROCESSOR
 
-LOCAL_CFLAGS += \
-  -DAES_ASM \
-  -DOPENSSL_BN_ASM_MONT \
-  -DSHA1_ASM \
-  -DSHA256_ASM 
-
 LOCAL_SRC_FILES += \
   crypto/aes/aes_cbc.c \
+  crypto/aes/aes_core.c \
   crypto/bf/bf_enc.c \
+  crypto/bn/bn_asm.c \
   crypto/des/des_enc.c \
   crypto/des/fcrypt_b.c \
   crypto/mem_clr.c \
   crypto/rc4/rc4_enc.c \
   crypto/rc4/rc4_skey.c 
-#\
-#  crypto/aes/asm/aes-mips.S \
-#  crypto/bn/asm/bn-mips.S \
-#  crypto/bn/asm/mips-mont.S \
-#  crypto/sha/asm/sha1-mips.S \
-#  crypto/sha/asm/sha256-mips.S 
 
 endif
 
